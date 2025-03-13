@@ -1,6 +1,8 @@
-# JGame
+# GraphiteJS
 
-JGame is a JavaScript game development library inspired by the popular Python library, Pygame. It provides a simple and intuitive API for creating 2D games.
+GraphiteJS is a JavaScript game development library inspired by the popular Python library, Pygame. It provides a simple and intuitive API for creating 2D games.
+
+GraphiteJS is a JavaScript game development library inspired by the popular Python library Pygame. It is meant as an aid for creating games in JavaScript. It makes use of pre-existing JavaScript features, and is not meant as an all in one solution. Besides, the only reason you should be making games in JavaScript is so you can play it on the web. This is not meant for full-scale projects.
 
 ## Features
 
@@ -17,23 +19,23 @@ JGame is a JavaScript game development library inspired by the popular Python li
 Clone the repository to your local machine:
 
 ```sh
-git clone https://github.com/yourusername/jgame.git
+git clone https://github.com/LeftOverDefault/GraphiteJS.git
 ```
 
 ### Usage
 
-Include the `main.js` file in your HTML:
+Include the `graphite.js` file in your HTML:
 
 ```html
-<script src="path/to/main.js"></script>
+<script src="graphite.js"></script>
 ```
 
-Initialize the JGame library and set up the canvas:
+Initialize the GraphiteJS library and set up the canvas:
 
 ```javascript
-const jg = new jgame();
-const canvas = document.getElementById('gameCanvas');
-jg.setCanvas(canvas);
+const gjs = new Graphite();
+const canvas = document.getElementById("gameCanvas");
+gjs.setCanvas(canvas);
 ```
 
 ### Example
@@ -41,7 +43,7 @@ jg.setCanvas(canvas);
 Create a vector and log its properties:
 
 ```javascript
-let vector2 = new jg.math.Vector2(100, 100);
+let vector2 = new gjs.math.Vector2(100, 100);
 console.log(vector2);
 ```
 
