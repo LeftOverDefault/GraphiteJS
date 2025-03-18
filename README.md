@@ -1,8 +1,6 @@
 # GraphiteJS
 
-GraphiteJS is a JavaScript game development library inspired by the popular Python library, Pygame. It provides a simple and intuitive API for creating 2D games.
-
-GraphiteJS is a JavaScript game development library inspired by the popular Python library Pygame. It is meant as an aid for creating games in JavaScript. It makes use of pre-existing JavaScript features, and is not meant as an all in one solution. Besides, the only reason you should be making games in JavaScript is so you can play it on the web. This is not meant for full-scale projects.
+GraphiteJS is a JavaScript game development library inspired by the popular Python library, Pygame. It provides a simple and intuitive API for creating 2D games. It is meant as an aid for creating games in JavaScript. It makes use of pre-existing JavaScript features, and is not meant as an all in one solution. Besides, the only reason you should be making games in JavaScript is so you can play it on the web. This is not meant for full-scale projects.
 
 ## Features
 

@@ -5,14 +5,16 @@ graphitejs.init()
 graphitejs.setCanvas(document.getElementById("gameCanvas"), { width: 1920, height: 1080 });
 
 const clock = new graphitejs.time.Clock();
-const network = new graphitejs.network.Network("http://127.0.0.1:3000");
+const socket = new graphitejs.network.Socket("http://127.0.0.1:3000");
 
-network.on("message", (data) => {
+const menu = new graphitejs.audio.Sound("./audio/fx/start-level.wav");
+
+socket.on("message", (data) => {
     console.log("[ NETWORK ][ DATA ]", data);
-    // You can use data.x and data.y to update the position of elements
 });
 
 const mouseHandler = new graphitejs.mouse.Mouse(graphitejs.canvas);
+const keyboarder = new graphitejs.keyboard.Keyboarder(graphitejs.canvas);
 
 const surface = new graphitejs.surface.Surface({ width: 100, height: 100});
 const color = new graphitejs.color.Color(255, 0, 0);
@@ -20,25 +22,16 @@ const rect = surface.getRect({ center: { x: 1920 / 2, y: 1080 / 2 } });
 
 surface.fill(color);
 
-const imageTest = new graphitejs.image.Image("test.png");
-const imageRect = imageTest.getRect({ topleft: { x: 100, y: 100 } });
+menu.play();
 
 function loop() {
     graphitejs.context.clearRect(0, 0, graphitejs.canvas.width, graphitejs.canvas.height);
-
-    if (imageRect.collidePoint({ x: mouseHandler.x, y: mouseHandler.y })) {
-        if (mouseHandler.isPressed("left")) {
-            imageRect.x = mouseHandler.x - (imageTest.image.width / 2);
-            imageRect.y = mouseHandler.y - (imageTest.image.height / 2);
-            if (network.isConnected) {
-                network.send("message", { x: imageRect.x, y: imageRect.y });
-            }
-        }
-    }
     
     surface.draw(graphitejs.context, rect);
-    
-    imageTest.draw(graphitejs.context, imageRect);
+
+    if (keyboarder.isPressed("k")) {
+        menu.play();
+    }
     
     clock.tick(60);
     
