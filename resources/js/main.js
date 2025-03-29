@@ -1,4 +1,6 @@
-let graphitejs = framework;
+// let graphitejs = framework;
+
+import { graphitejs } from "./graphitejs_v0.1.0.js";
 
 const canvas = document.getElementById("canvas");
 
@@ -41,7 +43,7 @@ function showInfo() {
 */
 
 function openDocs() {
-    Neutralino.os.open("https://neutralino.js.org/docs");
+  Neutralino.os.open("https://neutralino.js.org/docs");
 }
 
 
@@ -49,7 +51,7 @@ function openDocs() {
     Function to open a tutorial video on Neutralino's official YouTube channel in the default web browser.
 */
 function openTutorial() {
-    Neutralino.os.open("https://www.youtube.com/c/CodeZri");
+  Neutralino.os.open("https://www.youtube.com/c/CodeZri");
 }
 
 /*
@@ -58,24 +60,24 @@ function openTutorial() {
     it defines the tray menu items and sets up the tray accordingly.
 */
 function setTray() {
-    // Tray menu is only available in window mode
-    if(NL_MODE != "window") {
-        console.log("INFO: Tray menu is only available in the window mode.");
-        return;
-    }
+  // Tray menu is only available in window mode
+  if (NL_MODE != "window") {
+    console.log("INFO: Tray menu is only available in the window mode.");
+    return;
+  }
 
-    // Define tray menu items
-    let tray = {
-        icon: "/resources/icons/trayIcon.png",
-        menuItems: [
-            {id: "VERSION", text: "Get version"},
-            {id: "SEP", text: "-"},
-            {id: "QUIT", text: "Quit"}
-        ]
-    };
+  // Define tray menu items
+  let tray = {
+    icon: "/resources/icons/trayIcon.png",
+    menuItems: [
+      { id: "VERSION", text: "Get version" },
+      { id: "SEP", text: "-" },
+      { id: "QUIT", text: "Quit" }
+    ]
+  };
 
-    // Set the tray menu
-    Neutralino.os.setTray(tray);
+  // Set the tray menu
+  Neutralino.os.setTray(tray);
 }
 
 
@@ -85,17 +87,17 @@ function setTray() {
     such as displaying version information or exiting the application.
 */
 function onTrayMenuItemClicked(event) {
-    switch(event.detail.id) {
-        case "VERSION":
-            // Display version information
-            Neutralino.os.showMessageBox("Version information",
-                `Neutralinojs server: v${NL_VERSION} | Neutralinojs client: v${NL_CVERSION}`);
-            break;
-        case "QUIT":
-            // Exit the application
-            Neutralino.app.exit();
-            break;
-    }
+  switch (event.detail.id) {
+    case "VERSION":
+      // Display version information
+      Neutralino.os.showMessageBox("Version information",
+        `Neutralinojs server: v${NL_VERSION} | Neutralinojs client: v${NL_CVERSION}`);
+      break;
+    case "QUIT":
+      // Exit the application
+      Neutralino.app.exit();
+      break;
+  }
 }
 
 /*
@@ -103,7 +105,7 @@ function onTrayMenuItemClicked(event) {
 */
 
 function onWindowClose() {
-    Neutralino.app.exit();
+  Neutralino.app.exit();
 }
 
 // Initialize Neutralino
@@ -114,6 +116,6 @@ Neutralino.events.on("trayMenuItemClicked", onTrayMenuItemClicked);
 Neutralino.events.on("windowClose", onWindowClose);
 
 // Conditional initialization: Set up system tray if not running on macOS
-if(NL_OS != "Darwin") { // TODO: Fix https://github.com/neutralinojs/neutralinojs/issues/615
-    setTray();
+if (NL_OS != "Darwin") { // TODO: Fix https://github.com/neutralinojs/neutralinojs/issues/615
+  setTray();
 }

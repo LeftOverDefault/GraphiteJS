@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "Description",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "start": "neu run",
     "build": "neu build",
@@ -21,5 +22,9 @@
     "url": "https://github.com/LeftOverDefault/GraphiteJS/issues"
   },
   "homepage": "https://github.com/LeftOverDefault/GraphiteJS#readme",
-  "dependencies": {}
+  "dependencies": {
+    "express": "^4.21.2",
+    "http": "^0.0.1-security",
+    "ws": "^8.18.1"
+  }
 }
