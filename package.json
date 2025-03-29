@@ -1,18 +1,25 @@
 {
   "name": "graphitejs",
   "version": "0.1.0",
-  "main": "server/server.js",
+  "description": "Description",
+  "main": "index.js",
   "scripts": {
-    "serve": "node server/server.js"
+    "start": "neu run",
+    "build": "neu build",
+    "package": "neu package"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LeftOverDefault/GraphiteJS.git"
+  },
+  "keywords": [
+    "Framework"
+  ],
   "author": "Michael Goddard",
   "license": "MIT",
-  "description": "",
-  "dependencies": {
-    "express": "^4.21.2",
-    "fs": "^0.0.1-security",
-    "http": "^0.0.1-security",
-    "path": "^0.12.7",
-    "ws": "^8.18.1"
-  }
+  "bugs": {
+    "url": "https://github.com/LeftOverDefault/GraphiteJS/issues"
+  },
+  "homepage": "https://github.com/LeftOverDefault/GraphiteJS#readme",
+  "dependencies": {}
 }
