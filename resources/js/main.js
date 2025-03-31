@@ -1,47 +1,36 @@
-// let graphitejs = framework;
-
 import { graphitejs } from "./graphitejs_v0.1.0.js";
 
-const canvas = document.getElementById("canvas");
 
-graphitejs.init();
+class Main {
+  #canvas = document.getElementById("canvas");
 
-graphitejs.setCanvas(canvas, size = { width: 1920, height: 1080 });
+  constructor() {
+    graphitejs.init()
+    graphitejs.setCanvas(this.#canvas, { width: 1920, height: 1080 });
 
-function loop() {
-  graphitejs.getContext().clearRect(0, 0, graphitejs.getCanvas().width, graphitejs.getCanvas().height);
+    this.init();
+  }
 
-  graphitejs.update(loop);
+  init() {
+    this.font = new graphitejs.font.Font("FiraCode Nerd Font", 200, false, false);
+    this.font.underline = true;
+  }
+
+  run() {
+    let callback = () => {
+      graphitejs.clearCanvas("#2576bd");
+
+      this.font.render(graphitejs.getContext(), "Hello, World!", 10, 10);
+    }
+
+    graphitejs.startLoop(callback);
+  }
 }
 
-loop();
-
-
-// This is just a sample app. You can structure your Neutralinojs app code as you wish.
-// This example app is written with vanilla JavaScript and HTML.
-// Feel free to use any frontend framework you like :)
-// See more details: https://neutralino.js.org/docs/how-to/use-a-frontend-library
-
-/*
-    Function to display information about the Neutralino app.
-    This function updates the content of the 'info' element in the HTML
-    with details regarding the running Neutralino application, including
-    its ID, port, operating system, and version information.
-*/
-/*
-function showInfo() {
-    document.getElementById('info').innerHTML = `
-        ${NL_APPID} is running on port ${NL_PORT} inside ${NL_OS}
-        <br/><br/>
-        <span>server: v${NL_VERSION} . client: v${NL_CVERSION}</span>
-        `;
-}
-*/
 
 /*
     Function to open the official Neutralino documentation in the default web browser.
 */
-
 function openDocs() {
   Neutralino.os.open("https://neutralino.js.org/docs");
 }
@@ -103,7 +92,6 @@ function onTrayMenuItemClicked(event) {
 /*
     Function to handle the window close event by gracefully exiting the Neutralino application.
 */
-
 function onWindowClose() {
   Neutralino.app.exit();
 }
@@ -119,3 +107,7 @@ Neutralino.events.on("windowClose", onWindowClose);
 if (NL_OS != "Darwin") { // TODO: Fix https://github.com/neutralinojs/neutralinojs/issues/615
   setTray();
 }
+
+// Run main loop
+const main = new Main();
+main.run();
